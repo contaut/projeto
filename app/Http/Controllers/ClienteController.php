@@ -46,14 +46,14 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        /*$request->validate([
-            'nome_empresa' => 'required|max:255',
-            'cnpj' => 'required|max:18|unique:clientes',
+        $request->validate([
+            'nome' => 'required|max:255',
+            'cnpj' => 'required|max:18|unique:clientes|cnpj',
             'cga' => 'required|max:14|unique:clientes',
             'senha' => 'required',
             'uniprofissional' => 'required|max:255',
             'qtd_pessoas' => 'required_if:uniprofissional,S',
-        ]);*/
+        ]);
 
         $cliente = new Cliente();
         $cliente->nome = $request->input('nome');

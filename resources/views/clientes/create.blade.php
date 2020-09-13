@@ -11,6 +11,15 @@
             </div>
         </div>
     </div>
+    @if($errors->any())
+    <div class="card-footer">
+        @foreach ($errors->all() as $error)
+        <div class="alert alert-danger" role="alert">
+            {{ $error }}
+        </div>
+        @endforeach
+    </div>
+    @endif
 </div>
 <div class="tab-content">
     <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
@@ -21,12 +30,13 @@
                     <div class="form-row">
                         <div class="col-md-6">
                             <div class="position-relative form-group"><label for="nome" class="">Nome/Razão
-                                    Social</label><input name="nome" id="nome" placeholder="Digite aqui o nome" type="text"
-                                    class="form-control"></div>
+                                    Social</label><input name="nome" id="nome" placeholder="Digite aqui o nome"
+                                    type="text" class="form-control"></div>
                         </div>
                         <div class="col-md-6">
                             <div class="position-relative form-group"><label for="cnpj" class="">CNPJ</label><input
-                                    name="cnpj" id="cnpj" placeholder="Digite aqui o CNPJ" type="text" class="form-control">
+                                    name="cnpj" id="cnpj" placeholder="Digite aqui o CNPJ" type="text"
+                                    class="form-control">
                             </div>
                         </div>
                     </div>
@@ -38,8 +48,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="position-relative form-group"><label for="cga" class="">CGA/Inscrição
-                                    Municipal</label><input name="cga" id="Digite aqui o CGA" placeholder="Informe o CGA" type="text"
-                                    class="form-control"></div>
+                                    Municipal</label><input name="cga" id="Digite aqui o CGA"
+                                    placeholder="Informe o CGA" type="text" class="form-control"></div>
                         </div>
                     </div>
                     <div class="form-row">
