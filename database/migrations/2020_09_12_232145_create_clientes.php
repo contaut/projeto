@@ -1,0 +1,41 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateClientes extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('clientes', function (Blueprint $table) {
+            $table->id();
+            $table->string('nome', 250);
+            $table->string('cnpj', 20)->unique();
+            $table->string('cga', 20)->unique();
+            $table->boolean('uniprofissional');
+            $table->integer('qtd_socios')->nullable($value = true);
+            $table->string('senha', 100); 
+            $table->char('ativo')->default('S');
+            $table->timestamps();
+            $table->index('cnpj');
+            $table->index('cga');
+            $table->index('nome');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('clientes');
+    }
+}
