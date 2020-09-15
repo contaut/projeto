@@ -18,7 +18,7 @@ class CreateClientes extends Migration
             $table->string('nome', 250);
             $table->string('cnpj', 20)->unique();
             $table->string('cga', 20)->unique();
-            $table->boolean('uniprofissional');
+            $table->char('uniprofissional', 1);
             $table->integer('qtd_socios')->nullable($value = true);
             $table->string('senha', 100); 
             $table->char('ativo')->default('S');

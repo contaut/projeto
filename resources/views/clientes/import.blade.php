@@ -16,7 +16,19 @@
     <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
         <div class="main-card mb-3 card">
             <div class="card-body">
-                <form class="">
+                @if($failures ?? '')
+                <div class="card-footer">
+                    @foreach ($failures ?? '' as $failure)
+                    @foreach ($failure->errors() as $error)
+                    <div class="alert alert-danger" role="alert">
+                        {{ $error }}
+                    </div>
+                    @endforeach
+                    @endforeach
+                </div>
+                @endif
+                <form action="{{ route('clientes/importFile') }}" method="post" enctype="multipart/form-data">
+                    @csrf
                     <div class="form-row">
                         <div class="form-group col-md-6">
 
@@ -31,19 +43,19 @@
                         </div>
                         <div class="form-group col-md-12">
                             <strong>Importação de Dados dos Clientes <strong>
-                            <h6>
-                                <br> Selecione o arquivo Excel com os dados 
-                                <br> dos seus clientes e envie para o sistema
-                                <br> utilizando a planilha padrão. 
-                                <br>Clique no botão abaixo para fazer 
-                                <br>o download da planilha.
-                                <br>
+                                    <h6>
+                                        <br> Selecione o arquivo Excel com os dados
+                                        <br> dos seus clientes e envie para o sistema
+                                        <br> utilizando a planilha padrão.
+                                        <br>Clique no botão abaixo para fazer
+                                        <br>o download da planilha.
+                                        <br>
 
-                                <?php $arquivo = "planilha_padrao_contaut.xlsx";
-                                $nome_arquivo = "<strong>Planilha Padrão<strong>";
-                                echo "<label style='margin-top:15px;' id=selected><a class='btn btn-success' 
-                                href='uploads/" . $arquivo . "' download='$arquivo'>" . $nome_arquivo . "</a></label>";   
-                                ?>
+                                       
+                                        <label style='margin-top:15px;' id=selected>
+                                        <a class='btn btn-success'  href='{{asset('uploads/planilha_padrao_contaut.xlsx')}}'
+                                        download="planilha_padrao_contaut.xlsx"><strong>Planilha Padrão<strong></a></label>   
+                               
                         </div>
                     </div>
                 </form>

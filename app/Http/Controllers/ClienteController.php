@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Cliente;
 
+use App\Imports\ClientesImport;
+
+use Maatwebsite\Excel\Facades\Excel;
+
 class ClienteController extends Controller
 {
     /**
@@ -36,6 +40,26 @@ class ClienteController extends Controller
     public function import()
     {
         return view ('clientes.import');
+    }
+
+    public function importFile(Request $request) 
+    {
+        try
+        {
+        $request->validate([
+            'planilha' => 'required',
+        ]);
+        
+        $file = request()->file('planilha');
+        //dd($file);
+
+        Excel::import(new ClientesImport, $file);     
+        return redirect()->route('clientes.index');//with('success', 'All good!');  
+        } 
+        catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+            $failures = $e->failures();
+            return view('clientes.import', compact('failures'));
+         }
     }
      
     /**

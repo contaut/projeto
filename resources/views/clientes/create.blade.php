@@ -58,9 +58,9 @@
                                     class="">Uniprofissional?</label><select class="form-control" id="uniprofissional"
                                     name="uniprofissional">
 
-                                    <option value="0">Não</option>
+                                    <option value="N">Não</option>
 
-                                    <option value="1">Sim</option>
+                                    <option value="S">Sim</option>
 
                                 </select>
                             </div>
