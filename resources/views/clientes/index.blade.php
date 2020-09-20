@@ -29,89 +29,41 @@
     <div class="main-card mb-3 card">
       <div class="card-body">
         <h5 class="card-title">Lista de Clientes</h5>
+        @if(count($clientes)>0)
         <table id="cliente" class="mb-0 table table-striped">
           <thead>
             <tr>
               <th>Nome</th>
               <th>CNPJ</th>
-              <th>CJA</th>
-              <th>U.Prof</th>
+              <th>CGA</th>
+              <th>Uniprofissional</th>
               <th>Qtd Sócios</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
+            @foreach ($clientes as $cliente)
             <tr>
-              <td>xx</td>
-              <td>xx</td>
-              <td>xx</td>
-              <td>Sim</td>
-              <td>4</td>
+              <td> {{ $cliente->nome }} </td>
+              <td> {{ $cliente->cnpj }} </td>
+              <td> {{ $cliente->cga }} </td>
+              <td> {{ $cliente->uniprofissional }} </td>
+              <td> {{ $cliente->qtd_socios }} </td>
               <td>
-                <div>
-                  <div>
-                    <a class="btn btn-sm btn-warning" style="float: left;" href="(LINK)">Editar <span
-                        class="btn-icon-right"><i class="fa fa-edit"></i></span></a>
-                  </div>
-                  <div>
-                    <form action="#" method="post">
-                      @csrf
-                      @method('DELETE')
-                      <button type="submit" class="btn btn-sm btn-danger" style="margin-left:5px; float: left;">Apagar
-                        <span class="btn-icon-right"><i class="fa fa-trash"></i></span></a>
-                    </form>
-                  </div>
-                </div>
+                <a class="btn btn-sm btn-warning" style="float: left;"
+                  href="{{ route ('clientes.edit', $cliente['id'] ) }}">Editar</a>
+                <form action="{{ route('clientes.destroy', $cliente['id']) }}" method="post">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="btn btn-sm btn-danger" style="margin-left:5px; float: left;">Apagar
+                    </a>
+                </form>
               </td>
             </tr>
-            <tr>
-              <td>xx</td>
-              <td>xx</td>
-              <td>xx</td>
-              <td>Sim</td>
-              <td>4</td>
-              <td>
-                <div>
-                  <div>
-                    <a class="btn btn-sm btn-warning" style="float: left;" href="(LINK)">Editar <span
-                        class="btn-icon-right"><i class="fa fa-edit"></i></span></a>
-                  </div>
-                  <div>
-                    <form action="#" method="post">
-                      @csrf
-                      @method('DELETE')
-                      <button type="submit" class="btn btn-sm btn-danger" style="margin-left:5px; float: left;">Apagar
-                        <span class="btn-icon-right"><i class="fa fa-trash"></i></span></a>
-                    </form>
-                  </div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>xx</td>
-              <td>xx</td>
-              <td>xx</td>
-              <td>Sim</td>
-              <td>4</td>
-              <td>
-                <div>
-                  <div>
-                    <a class="btn btn-sm btn-warning" style="float: left;" href="(LINK)">Editar <span
-                        class="btn-icon-right"><i class="fa fa-edit"></i></span></a>
-                  </div>
-                  <div>
-                    <form action="#" method="post">
-                      @csrf
-                      @method('DELETE')
-                      <button type="submit" class="btn btn-sm btn-danger" style="margin-left:5px; float: left;">Apagar
-                        <span class="btn-icon-right"><i class="fa fa-trash"></i></span></a>
-                    </form>
-                  </div>
-                </div>
-              </td>
-            </tr>
+            @endforeach
           </tbody>
         </table>
+        @endif
       </div>
     </div>
   </div>
@@ -126,6 +78,7 @@ $('#cliente').DataTable({
   "paging": true,
   "ordering": false,
   "info": true,
+ // "autoWidth": false,
   buttons: [
             'copyHtml5',
             'excelHtml5',
@@ -133,10 +86,11 @@ $('#cliente').DataTable({
             'pdfHtml5'
         ],
         "aoColumnDefs": [
-      { "sWidth": "150px", "aTargets": [0],
-      "sWidth": "100px", "aTargets": [1],
-      "sWidth": "60px", "aTargets": [2],
-      "sWidth": "30px", "aTargets": [3],
+      { "sWidth": "50px", "aTargets": [0],
+      "sWidth": "50px", "aTargets": [1],
+      "sWidth": "50px", "aTargets": [2],
+      "sWidth": "50px", "aTargets": [3],
+      "sWidth": "30px", "aTargets": [4],
       } 
       ],
   "language": {

@@ -19,7 +19,8 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        return view ('clientes.index');
+        $clientes = Cliente::all();
+        return view ('clientes.index', compact('clientes'));
     }
 
       /**
@@ -30,11 +31,6 @@ class ClienteController extends Controller
     public function create()
     {
         return view ('clientes.create');
-    }
-
-    public function edit()
-    {
-        return view ('clientes.edit');
     }
 
     public function import()
@@ -87,6 +83,37 @@ class ClienteController extends Controller
         $cliente->uniprofissional = $request->input('uniprofissional');
         $cliente->qtd_socios = $request->input('qtd_pessoas');
         $cliente->save();
+        return redirect()->route('clientes.index');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        if(!$client = Cliente::find($id))
+            return redirect()->back();
+
+        return view ('clientes.edit', compact('client'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        if(!$client = Cliente::find($id))
+            return redirect()->back();
+        
+        $client->update($request->all());
+
         return redirect()->route('clientes.index');
     }
 }
