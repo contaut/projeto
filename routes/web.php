@@ -22,7 +22,9 @@ Auth::routes();
 
 Route::get('clientes/import', 'ClienteController@import')->name('clientes/import');
 Route::post('clientes/importFile', 'ClienteController@importFile')->name('clientes/importFile');
-Route::resource('clientes', 'ClienteController');
+
+Route::resource('clientes', 'ClienteController', ['except' => 'destroy']);
+Route::get('cliente/delete/{id}', 'ClienteController@destroy');
 
 
 

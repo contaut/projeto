@@ -116,4 +116,20 @@ class ClienteController extends Controller
 
         return redirect()->route('clientes.index');
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        if(!$client = Cliente::find($id))
+            return redirect()->back();
+        
+        $client->delete();
+
+        return redirect()->route('clientes.index');
+    }
 }

@@ -1,0 +1,11 @@
+.required_input
+{
+ color:red;
+}
+
+.font-required
+{
+    font-size:12px;
+    font-weight: 600;
+    vertical-align: super;
+}

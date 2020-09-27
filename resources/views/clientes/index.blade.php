@@ -47,17 +47,12 @@
               <td> {{ $cliente->nome }} </td>
               <td> {{ $cliente->cnpj }} </td>
               <td> {{ $cliente->cga }} </td>
-              <td> {{ $cliente->uniprofissional }} </td>
-              <td> {{ $cliente->qtd_socios }} </td>
+              <td> {{ $cliente->uniprofissional === "N" ? "Não" : "Sim" }} </td>
+              <td> {{ $cliente->qtd_socios > 0 ? $cliente->qtd_socios : "-" }} </td>
               <td>
-                <a class="btn btn-sm btn-warning" style="float: left;"
-                  href="{{ route ('clientes.edit', $cliente['id'] ) }}">Editar</a>
-                <form action="{{ route('clientes.destroy', $cliente['id']) }}" method="post">
-                  @csrf
-                  @method('DELETE')
-                  <button type="submit" class="btn btn-sm btn-danger" style="margin-left:5px; float: left;">Apagar
-                    </a>
-                </form>
+                <a href="{{ route ('clientes.edit', $cliente['id'] ) }}" title="Editar"><i class="fas fa-edit"></i></a>
+                <a href="/cliente/delete/{{$cliente->id}}" title="Apagar" class="delete-confirm required_input"><i
+                    class="fas fa-trash"></i></a>
               </td>
             </tr>
             @endforeach
@@ -68,31 +63,50 @@
     </div>
   </div>
 </div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
 <script>
+  $('.delete-confirm').on('click', function (event) {
+    event.preventDefault();
+    const url = $(this).attr('href');
+    swal({
+        title: 'Você tem certeza?',
+        text: 'Esse registro será apagado permanentemente!',
+        icon: 'warning',
+        buttons: ["Cancelar", "Sim"],
+        closeOnClickOutside: false,
+        dangerMode: true,
+    }).then(function(value) {
+        if (value) {
+            window.location.href = url;
+        }
+    });
+});
   $(function () {
 $('#cliente').DataTable({
   "paging": true,
   "ordering": false,
   "info": true,
  // "autoWidth": false,
+  'columnDefs': [
+  {
+        "targets": 2, // your case first column
+        "className": "text-center",
+  },
+  {
+        "targets": 3,
+        "className": "text-center",
+  },
+  {
+        "targets": 4,
+        "className": "text-center",
+  }],
   buttons: [
             'copyHtml5',
             'excelHtml5',
             'csvHtml5',
             'pdfHtml5'
         ],
-        "aoColumnDefs": [
-      { "sWidth": "50px", "aTargets": [0],
-      "sWidth": "50px", "aTargets": [1],
-      "sWidth": "50px", "aTargets": [2],
-      "sWidth": "50px", "aTargets": [3],
-      "sWidth": "30px", "aTargets": [4],
-      } 
-      ],
   "language": {
   "sEmptyTable":   "Não foi encontrado nenhum registo",
   "sLoadingRecords": "A carregar...",
@@ -118,6 +132,7 @@ $('#cliente').DataTable({
 
     },
 });
+$('div.dataTables_filter input').focus()
 });
 </script>
 @endsection
