@@ -72,7 +72,7 @@ class ClienteController extends Controller
             'cga' => 'required|max:14|unique:clientes',
             'senha' => 'required',
             'uniprofissional' => 'required|max:255',
-            'qtd_pessoas' => 'required_if:uniprofissional,S',
+            'qtd_socios' => 'required_if:uniprofissional,==,S',
         ]);
 
         $cliente = new Cliente();
@@ -81,7 +81,7 @@ class ClienteController extends Controller
         $cliente->cga = $request->input('cga');
         $cliente->senha = $request->input('senha');
         $cliente->uniprofissional = $request->input('uniprofissional');
-        $cliente->qtd_socios = $request->input('qtd_pessoas');
+        $cliente->qtd_socios = $request->input('qtd_socios');
         $cliente->save();
         return redirect()->route('clientes.index');
     }
@@ -111,7 +111,7 @@ class ClienteController extends Controller
     {
         if(!$client = Cliente::find($id))
             return redirect()->back();
-        
+
         $client->update($request->all());
 
         return redirect()->route('clientes.index');

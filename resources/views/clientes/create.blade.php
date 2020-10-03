@@ -70,7 +70,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="position-relative form-group"><label for="cga" class="">CGA/Inscrição
-                                    Municipal <span class="required_input">*</span></label><input name="cga"
+                                    Municipal <span class="required_input">*</span></label><input name="cga" id="cga"
                                     id="Digite aqui o CGA" placeholder="Informe o CGA" type="text" class="form-control"
                                     required>
                                 <div class="invalid-feedback">
@@ -121,6 +121,7 @@
 <script>
     $(document).ready(function(){
   $(cnpj).inputmask("99.999.999/9999-99");  //static mask
+  $(cga).inputmask("999.999/999-99");
 });
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {
