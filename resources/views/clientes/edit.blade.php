@@ -157,5 +157,23 @@ $( "#uniprofissional" ).change(function() {
     $('#qtd_socios').attr('required', true);
   }
 });
+
+
+$( window ).load(function() {
+    var qtd_socios = $("#qtd_socios" ).val();
+
+  if(qtd_socios == '')
+  {
+    $("#socios").css("display", "none");
+    $("#qtd_socios").val("");
+    $('#qtd_socios').attr('required', false);
+  }
+  else
+  {
+    $("#socios").css("display", "inline");
+    $('#qtd_socios').attr('required', true);
+  }
+
+});
 </script>
 @endsection
