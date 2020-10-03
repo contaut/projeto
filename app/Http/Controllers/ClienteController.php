@@ -112,6 +112,15 @@ class ClienteController extends Controller
         if(!$client = Cliente::find($id))
             return redirect()->back();
 
+        $request->validate([
+            'nome' => 'required|max:255',
+            'cnpj' => 'required|max:18|unique:clientes|cnpj',
+            'cga' => 'required|max:14|unique:clientes',
+            'senha' => 'required',
+            'uniprofissional' => 'required|max:255',
+            'qtd_socios' => 'required_if:uniprofissional,==,S',
+        ]);
+
         $client->update($request->all());
 
         return redirect()->route('clientes.index');
