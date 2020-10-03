@@ -14,8 +14,9 @@
     @if($errors->any())
     <div class="card-footer">
         @foreach ($errors->all() as $error)
-        <div class="alert alert-danger" role="alert">
-            {{ $error }}
+        <div class="alert alert-danger"><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+            <strong>Erro!</strong>
+            <p>{{ $error }}</p>
         </div>
         @endforeach
     </div>

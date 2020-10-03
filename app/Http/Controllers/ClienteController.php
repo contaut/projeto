@@ -83,7 +83,7 @@ class ClienteController extends Controller
         $cliente->uniprofissional = $request->input('uniprofissional');
         $cliente->qtd_socios = $request->input('qtd_socios');
         $cliente->save();
-        return redirect()->route('clientes.index');
+        return redirect()->route('clientes.index')->with('mensagem', 'Cliente cadastrado!');
     }
 
     /**
@@ -123,7 +123,7 @@ class ClienteController extends Controller
 
         $client->update($request->all());
 
-        return redirect()->route('clientes.index');
+        return redirect()->route('clientes.index')->with('mensagem', 'Cliente atualizado!');
     }
 
     /**

@@ -20,10 +20,15 @@
       </div>
       <div><strong>Clientes</strong>
       </div>
-
     </div>
   </div>
 </div>
+@if(session('mensagem'))
+<div class="alert alert-success"><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+  <strong>Sucesso!</strong>
+  <p>{{session('mensagem')}}</p>
+</div>
+@endif
 <div class="row">
   <div class="col-lg-12">
     <div class="main-card mb-3 card">
