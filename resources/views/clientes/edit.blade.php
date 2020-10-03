@@ -112,7 +112,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="" class="mt-2 btn btn-secondary">Cancelar</button>
+                    <a href="{{ url()->previous() }}" class="mt-2 btn btn-secondary">Cancelar</a>
                     <button class="mt-2 btn btn-primary">Salvar</button>
                 </form>
             </div>

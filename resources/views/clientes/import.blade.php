@@ -38,7 +38,7 @@
                                 accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
                             <div style="height:30px;">
                             </div>
-                            <button type="" class=" mt-2 btn btn-secondary">Cancelar</button>
+                            <a href="{{ url()->previous() }}" class="mt-2 btn btn-secondary">Cancelar</a>
                             <button type="submit" class=" mt-2 btn btn-primary" name="Submit">Enviar</button>
                         </div>
                         <div class="form-group col-md-12">
@@ -51,11 +51,13 @@
                                         <br>o download da planilha.
                                         <br>
 
-                                       
+
                                         <label style='margin-top:15px;' id=selected>
-                                        <a class='btn btn-success'  href='{{asset('uploads/planilha_padrao_contaut.xlsx')}}'
-                                        download="planilha_padrao_contaut.xlsx"><strong>Planilha Padrão<strong></a></label>   
-                               
+                                            <a class='btn btn-success'
+                                                href='{{asset('uploads/planilha_padrao_contaut.xlsx')}}'
+                                                download="planilha_padrao_contaut.xlsx"><strong>Planilha
+                                                    Padrão<strong></a></label>
+
                         </div>
                     </div>
                 </form>
