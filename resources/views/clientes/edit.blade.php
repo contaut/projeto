@@ -31,6 +31,7 @@
                     novalidate>
                     @csrf
                     @method('PUT')
+                    <input type="hidden" name="back_to" value="{{ old('back_to') ?: url()->previous() }}">
                     <div class="form-row">
                         <div class="col-md-6">
                             <div class="position-relative form-group"><label for="nome" class="">Nome/Razão
@@ -113,7 +114,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="{{ url()->previous() }}" class="mt-2 btn btn-secondary">Cancelar</a>
+                    <a class="mt-2 btn btn-secondary" href="{{ old('back_to') ?: url()->previous() }}">Cancelar</a>
                     <button class="mt-2 btn btn-primary">Salvar</button>
                 </form>
             </div>
