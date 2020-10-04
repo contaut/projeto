@@ -1,16 +1,17 @@
 @extends('layouts.admin')
 @section('content')
-<link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
+<!--<link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">-->
 <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
 
-<!--<script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
-
-<link href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css" rel="stylesheet">-->
+<link href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css" rel="stylesheet">
 <div class="app-page-title">
   <div class="page-title-wrapper">
     <div class="page-title-heading">
@@ -68,8 +69,7 @@
     </div>
   </div>
 </div>
-<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+
 <script>
   $('.delete-confirm').on('click', function (event) {
     event.preventDefault();
@@ -89,8 +89,9 @@
 });
   $(function () {
 $('#cliente').DataTable({
+  dom: 'Bfrtip',
   "paging": true,
-  "ordering": false,
+  "ordering": true,
   "info": true,
  // "autoWidth": false,
   'columnDefs': [
@@ -105,12 +106,13 @@ $('#cliente').DataTable({
   {
         "targets": 4,
         "className": "text-center",
+  },
+  { "orderable": false, 
+  "targets": 5 
   }],
   buttons: [
-            'copyHtml5',
             'excelHtml5',
-            'csvHtml5',
-            'pdfHtml5'
+            'csvHtml5'
         ],
   "language": {
   "sEmptyTable":   "Não foi encontrado nenhum registo",
