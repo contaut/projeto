@@ -34,7 +34,7 @@
                             <div class="position-relative form-group"><label for="nome" class="">Nome/Razão
                                     Social <span class="required_input">*</span></label><input name="nome" id="nome"
                                     placeholder="Digite aqui o nome" autofocus type="text" class="form-control"
-                                    required>
+                                    value="{{ old('nome') }}" required>
                                 <div class="invalid-feedback">
                                     Por favor, informe o nome/razão social.
                                 </div>
@@ -46,7 +46,8 @@
                         <div class="col-md-6">
                             <div class="position-relative form-group"><label for="cnpj" class="">CNPJ <span
                                         class="required_input">*</span></label><input name="cnpj" id="cnpj"
-                                    placeholder="Digite aqui o CNPJ" type="text" class="form-control" required>
+                                    placeholder="Digite aqui o CNPJ" type="text" class="form-control" required
+                                    value="{{ old('cnpj') }}">
                                 <div class="invalid-feedback">
                                     Por favor, informe o CNPJ.
                                 </div>
@@ -60,7 +61,8 @@
                         <div class="col-md-6">
                             <div class="position-relative form-group"><label for="senha" class="">Senha <span
                                         class="required_input">*</span></label><input name="senha" id="senha"
-                                    placeholder="Digite aqui a senha" type="password" class="form-control" required>
+                                    placeholder="Digite aqui a senha" type="password" class="form-control"
+                                    value="{{ old('senha') }}" required>
                                 <div class="invalid-feedback">
                                     Por favor, informe a senha.
                                 </div>
@@ -72,8 +74,8 @@
                         <div class="col-md-6">
                             <div class="position-relative form-group"><label for="cga" class="">CGA/Inscrição
                                     Municipal <span class="required_input">*</span></label><input name="cga" id="cga"
-                                    id="Digite aqui o CGA" placeholder="Informe o CGA" type="text" class="form-control"
-                                    required>
+                                    id="Digite aqui o CGA" placeholder="Informe o CGA" value="{{ old('cga') }}"
+                                    type="text" class="form-control" required>
                                 <div class="invalid-feedback">
                                     Por favor, informe o CGA/Inscrição Municipal.
                                 </div>
@@ -88,11 +90,10 @@
                             <div class="position-relative form-group"><label for="uniprofissional"
                                     class="">Uniprofissional? <span class="required_input">*</span></label><select
                                     class="form-control" id="uniprofissional" name="uniprofissional" required>
-
-                                    <option value="N">Não</option>
-
-                                    <option value="S">Sim</option>
-
+                                    <option value="N" @if (old('uniprofissional')=="N" ) {{ 'selected' }} @endif>Não
+                                    </option>
+                                    <option value="S" @if (old('uniprofissional')=="S" ) {{ 'selected' }} @endif>Sim
+                                    </option>
                                 </select>
                                 <div class="valid-feedback">
                                     Parece OK!
@@ -102,7 +103,8 @@
                         <div class="col-md-6" id="socios" style="display: none;">
                             <div class="position-relative form-group"><label for="qtd_socios" class="">Quantidade de
                                     sócios</label><input name="qtd_socios" id="qtd_socios" type="number"
-                                    class="form-control" placeholder="Digite aqui a quantidade de sócios">
+                                    value="{{ old('qtd_socios') }}" class="form-control"
+                                    placeholder="Digite aqui a quantidade de sócios">
                                 <div class="invalid-feedback">
                                     Por favor, informe a quantidade de sócios.
                                 </div>
@@ -156,6 +158,23 @@ $( "#uniprofissional" ).change(function() {
     $("#socios").css("display", "inline");
     $('#qtd_socios').attr('required', true);
   }
+});
+
+$( window ).load(function() {
+    var qtd_socios = $("#qtd_socios" ).val();
+
+  if(qtd_socios == '')
+  {
+    $("#socios").css("display", "none");
+    $("#qtd_socios").val("");
+    $('#qtd_socios').attr('required', false);
+  }
+  else
+  {
+    $("#socios").css("display", "inline");
+    $('#qtd_socios').attr('required', true);
+  }
+
 });
 
 </script>
