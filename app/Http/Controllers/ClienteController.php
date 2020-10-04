@@ -10,6 +10,10 @@ use App\Imports\ClientesImport;
 
 use Maatwebsite\Excel\Facades\Excel;
 
+use Illuminate\Validation\Rule;
+
+use Illuminate\Support\Facades\Validator;
+
 class ClienteController extends Controller
 {
     /**
@@ -112,14 +116,24 @@ class ClienteController extends Controller
         if(!$client = Cliente::find($id))
             return redirect()->back();
 
-        $request->validate([
-            'nome' => 'required|max:255',
-            'cnpj' => 'required|max:18|unique:clientes|cnpj',
-            'cga' => 'required|max:14|unique:clientes',
-            'senha' => 'required',
-            'uniprofissional' => 'required|max:255',
-            'qtd_socios' => 'required_if:uniprofissional,==,S',
-        ]);
+            Validator::make($request->all(), [
+                'cnpj' => [
+                    'required',
+                    'max:18',
+                    'cnpj',
+                    Rule::unique('clientes')->ignore($client->id),
+                ],
+                'cga' => [
+                    'required',
+                    'max:14',
+                    'cnpj',
+                    Rule::unique('clientes')->ignore($client->id),
+                ],
+                'nome' => 'required|max:255',
+                'senha' => 'required',
+                'uniprofissional' => 'required|max:255',
+                'qtd_socios' => 'required_if:uniprofissional,==,S',
+            ]);   
 
         $client->update($request->all());
 

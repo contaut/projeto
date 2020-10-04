@@ -49,7 +49,7 @@
                         <div class="col-md-6">
                             <div class="position-relative form-group"><label for="cnpj" class="">CNPJ</label><input
                                     name="cnpj" id="cnpj" placeholder="Digite aqui o CNPJ" type="text"
-                                    value="{{ $client['cnpj']}}" class="form-control" required>
+                                    value="{{ $client['cnpj']}}" class="form-control" required readonly>
                                 <div class="invalid-feedback">
                                     Por favor, informe o CNPJ.
                                 </div>
@@ -77,7 +77,7 @@
                             <div class="position-relative form-group"><label for="cga" class="">CGA/Inscrição
                                     Municipal <span class="required_input">*</span></label><input name="cga" id="cga"
                                     placeholder="Informe o CGA" type="text" class="form-control"
-                                    value="{{ $client['cga']}}" required>
+                                    value="{{ $client['cga']}}" required readonly>
                                 <div class="invalid-feedback">
                                     Por favor, informe o CGA/Inscrição Municipal.
                                 </div>

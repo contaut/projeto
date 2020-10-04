@@ -14,9 +14,8 @@
     @if($errors->any())
     <div class="card-footer">
         @foreach ($errors->all() as $error)
-        <div class="alert alert-danger"><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-            <strong>Erro!</strong>
-            <p>{{ $error }}</p>
+        <div class="alert alert-danger" role="alert">
+            {{ $error }}
         </div>
         @endforeach
     </div>
@@ -29,93 +28,92 @@
             <div class="card-body">
                 <form action="{{ route('clientes.store') }}" method="post" class="needs-validation" novalidate>
                     @csrf
+                    <input type="hidden" name="back_to" value="{{ old('back_to') ?: url()->previous() }}">
                     <div class="form-row">
-                        <input type="hidden" name="back_to" value="{{ old('back_to') ?: url()->previous() }}">
-                        <div class="form-row">
-                            <div class="col-md-6">
-                                <div class="position-relative form-group"><label for="nome" class="">Nome/Razão
-                                        Social <span class="required_input">*</span></label><input name="nome" id="nome"
-                                        placeholder="Digite aqui o nome" autofocus type="text" class="form-control"
-                                        required>
-                                    <div class="invalid-feedback">
-                                        Por favor, informe o nome/razão social.
-                                    </div>
-                                    <div class="valid-feedback">
-                                        Parece OK!
-                                    </div>
+                        <div class="col-md-6">
+                            <div class="position-relative form-group"><label for="nome" class="">Nome/Razão
+                                    Social <span class="required_input">*</span></label><input name="nome" id="nome"
+                                    placeholder="Digite aqui o nome" autofocus type="text" class="form-control"
+                                    required>
+                                <div class="invalid-feedback">
+                                    Por favor, informe o nome/razão social.
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="position-relative form-group"><label for="cnpj" class="">CNPJ <span
-                                            class="required_input">*</span></label><input name="cnpj" id="cnpj"
-                                        placeholder="Digite aqui o CNPJ" type="text" class="form-control" required>
-                                    <div class="invalid-feedback">
-                                        Por favor, informe o CNPJ.
-                                    </div>
-                                    <div class="valid-feedback">
-                                        Parece OK!
-                                    </div>
+                                <div class="valid-feedback">
+                                    Parece OK!
                                 </div>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="col-md-6">
-                                <div class="position-relative form-group"><label for="senha" class="">Senha <span
-                                            class="required_input">*</span></label><input name="senha" id="senha"
-                                        placeholder="Digite aqui a senha" type="password" class="form-control" required>
-                                    <div class="invalid-feedback">
-                                        Por favor, informe a senha.
-                                    </div>
-                                    <div class="valid-feedback">
-                                        Parece OK!
-                                    </div>
+                        <div class="col-md-6">
+                            <div class="position-relative form-group"><label for="cnpj" class="">CNPJ <span
+                                        class="required_input">*</span></label><input name="cnpj" id="cnpj"
+                                    placeholder="Digite aqui o CNPJ" type="text" class="form-control" required>
+                                <div class="invalid-feedback">
+                                    Por favor, informe o CNPJ.
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="position-relative form-group"><label for="cga" class="">CGA/Inscrição
-                                        Municipal <span class="required_input">*</span></label><input name="cga"
-                                        id="cga" id="Digite aqui o CGA" placeholder="Informe o CGA" type="text"
-                                        class="form-control" required>
-                                    <div class="invalid-feedback">
-                                        Por favor, informe o CGA/Inscrição Municipal.
-                                    </div>
-                                    <div class="valid-feedback">
-                                        Parece OK!
-                                    </div>
+                                <div class="valid-feedback">
+                                    Parece OK!
                                 </div>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="col-md-6">
-                                <div class="position-relative form-group"><label for="uniprofissional"
-                                        class="">Uniprofissional? <span class="required_input">*</span></label><select
-                                        class="form-control" id="uniprofissional" name="uniprofissional" required>
-
-                                        <option value="N">Não</option>
-
-                                        <option value="S">Sim</option>
-
-                                    </select>
-                                    <div class="valid-feedback">
-                                        Parece OK!
-                                    </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="position-relative form-group"><label for="senha" class="">Senha <span
+                                        class="required_input">*</span></label><input name="senha" id="senha"
+                                    placeholder="Digite aqui a senha" type="password" class="form-control" required>
+                                <div class="invalid-feedback">
+                                    Por favor, informe a senha.
                                 </div>
-                            </div>
-                            <div class="col-md-6" id="socios" style="display: none;">
-                                <div class="position-relative form-group"><label for="qtd_socios" class="">Quantidade de
-                                        sócios</label><input name="qtd_socios" id="qtd_socios" type="number"
-                                        class="form-control" placeholder="Digite aqui a quantidade de sócios">
-                                    <div class="invalid-feedback">
-                                        Por favor, informe a quantidade de sócios.
-                                    </div>
-                                    <div class="valid-feedback">
-                                        Parece OK!
-                                    </div>
+                                <div class="valid-feedback">
+                                    Parece OK!
                                 </div>
                             </div>
                         </div>
-                        <a class="mt-2 btn btn-secondary" href="{{ old('back_to') ?: url()->previous() }}">Cancelar</a>
-                        <button class="mt-2 btn btn-primary">Salvar</button>
+                        <div class="col-md-6">
+                            <div class="position-relative form-group"><label for="cga" class="">CGA/Inscrição
+                                    Municipal <span class="required_input">*</span></label><input name="cga" id="cga"
+                                    id="Digite aqui o CGA" placeholder="Informe o CGA" type="text" class="form-control"
+                                    required>
+                                <div class="invalid-feedback">
+                                    Por favor, informe o CGA/Inscrição Municipal.
+                                </div>
+                                <div class="valid-feedback">
+                                    Parece OK!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="position-relative form-group"><label for="uniprofissional"
+                                    class="">Uniprofissional? <span class="required_input">*</span></label><select
+                                    class="form-control" id="uniprofissional" name="uniprofissional" required>
+
+                                    <option value="N">Não</option>
+
+                                    <option value="S">Sim</option>
+
+                                </select>
+                                <div class="valid-feedback">
+                                    Parece OK!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" id="socios" style="display: none;">
+                            <div class="position-relative form-group"><label for="qtd_socios" class="">Quantidade de
+                                    sócios</label><input name="qtd_socios" id="qtd_socios" type="number"
+                                    class="form-control" placeholder="Digite aqui a quantidade de sócios">
+                                <div class="invalid-feedback">
+                                    Por favor, informe a quantidade de sócios.
+                                </div>
+                                <div class="valid-feedback">
+                                    Parece OK!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="mt-2 btn btn-secondary" href="{{ old('back_to') ?: url()->previous() }}">Cancelar</a>
+                    <button class="mt-2 btn btn-primary">Salvar</button>
                 </form>
             </div>
         </div>
