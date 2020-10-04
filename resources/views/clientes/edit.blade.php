@@ -92,8 +92,10 @@
                             <div class="position-relative form-group"><label for="uniprofissional"
                                     class="">Uniprofissional? <span class="required_input">*</span></label><select
                                     class="form-control" id="uniprofissional" name="uniprofissional" required>
-                                    <option value="N">Não</option>
-                                    <option value="S">Sim</option>
+                                    <option value="N" {{$client['uniprofissional'] == 'N' ? 'selected' : ''}}>Não
+                                    </option>
+                                    <option value="S" {{$client['uniprofissional'] == 'S' ? 'selected' : ''}}>Sim
+                                    </option>
                                 </select>
                                 <div class="valid-feedback">
                                     Parece OK!
