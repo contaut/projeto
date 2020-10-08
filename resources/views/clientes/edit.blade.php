@@ -163,7 +163,7 @@ $( "#uniprofissional" ).change(function() {
 });
 
 
-$( window ).load(function() {
+$( document ).ready(function() {
     var qtd_socios = $("#qtd_socios" ).val();
 
   if(qtd_socios == '')
