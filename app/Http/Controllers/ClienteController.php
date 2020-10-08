@@ -72,8 +72,8 @@ class ClienteController extends Controller
     {
         $request->validate([
             'nome' => 'required|max:255',
-            'cnpj' => 'required|max:18|unique:clientes|cnpj',
-            'cga' => 'required|max:14|unique:clientes',
+            'cnpj' => 'required|string|max:18|unique:clientes|cnpj',
+            'cga' => 'required|string|min:14|max:14|unique:clientes|regex:/^\d{3}\.\d{3}\/\d{3}\-\d{2}$/',
             'senha' => 'required',
             'uniprofissional' => 'required|max:255',
             'qtd_socios' => 'required_if:uniprofissional,==,S',
