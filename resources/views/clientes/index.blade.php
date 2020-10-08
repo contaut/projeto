@@ -89,6 +89,7 @@
 });
   $(function () {
 $('#cliente').DataTable({
+  stateSave: true,
   dom: 'Bfrtip',
   "paging": true,
   "ordering": true,
