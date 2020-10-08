@@ -129,7 +129,7 @@ $('#cliente').DataTable({
   "oPaginate": {
       "sFirst":    "Primeiro",
       "sPrevious": "Anterior",
-      "sNext":     "Seguinte",
+      "sNext":     "Próximo",
       "sLast":     "Último"
   },
   "oAria": {
