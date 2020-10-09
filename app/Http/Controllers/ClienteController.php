@@ -70,6 +70,10 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
+        $mensagens = [
+            'required_if' => 'O campo quantidade de sócios é obrigatório quando a empresa é uniprofissional.'
+        ];
+
         $request->validate([
             'nome' => 'required|max:255',
             'cnpj' => 'required|string|max:18|unique:clientes|cnpj',
@@ -77,7 +81,7 @@ class ClienteController extends Controller
             'senha' => 'required',
             'uniprofissional' => 'required|max:255',
             'qtd_socios' => 'required_if:uniprofissional,==,S',
-        ]);
+        ], $mensagens);
 
         $cliente = new Cliente();
         $cliente->nome = $request->input('nome');
