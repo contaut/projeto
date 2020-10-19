@@ -364,10 +364,10 @@ iframe {
   border-radius: 21px;
 
   background: #1E90FF;
-  background: -webkit-linear-gradient(left, #4169E1, #1E90FF, #00BFFF);
+  /*background: -webkit-linear-gradient(left, #4169E1, #1E90FF, #00BFFF);
   background: -o-linear-gradient(left, #4169E1, #1E90FF, #00BFFF);
   background: -moz-linear-gradient(left, #4169E1, #1E90FF, #00BFFF);
-  background: linear-gradient(left, #4169E1, #1E90FF, #00BFFF);
+  background: linear-gradient(left, #4169E1, #1E90FF, #00BFFF);*/
   position: relative;
   z-index: 1;
 
@@ -393,7 +393,7 @@ iframe {
   width: 100%;
   height: 100%;
   border-radius: 21px;
-  background-color: #555555;
+  background-color: #00BFFF;
   top: 0;
   left: 0;
   opacity: 0;
@@ -493,6 +493,17 @@ iframe {
 .body_bg
 {
   background-image: url('/../assets/images/bg-01.jpg');
+}
+
+.cor_preta
+{
+  color: black;
+}
+
+.div_esqueceu
+{
+  text-align:center; 
+  margin-top:10px;
 }
 
 

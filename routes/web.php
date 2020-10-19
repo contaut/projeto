@@ -27,4 +27,4 @@ Route::resource('clientes', 'ClienteController', ['except' => 'destroy']);
 Route::get('cliente/delete/{id}', 'ClienteController@destroy');
 
 
-
+Route::get('/home', 'HomeController@index')->name('home');

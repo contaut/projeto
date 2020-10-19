@@ -26,7 +26,8 @@
     <link href="{{ asset('assets/css/system.css') }}" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-    <script type='text/javascript' src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
+    <script type='text/javascript'
+        src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
 
 </head>
 
@@ -74,10 +75,7 @@
                                 <div class="widget-content-left">
                                     <div class="btn-group">
                                         <div style="margin-top:8px;margin-right:14px;">
-                                            <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                                class="p-0 btn">
-                                                Olá, Nome do Cliente
-                                            </a>
+                                                Olá, Luana
                                         </div>
                                         <div>
                                             <a href="javascript:void(0);" class="nav-link">
@@ -86,10 +84,15 @@
                                             </a>
                                         </div>
                                         <div>
-                                            <a href="javascript:void(0);" class="nav-link">
-                                                <i class="nav-link-icon fa fa-sign-out-alt"> </i>
-                                                Sair
+                                            <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                               document.getElementById('logout-form').submit();">
+                                                 <i class="nav-link-icon fa fa-sign-out-alt"> </i> Sair
                                             </a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                style="display: none;">
+                                                @csrf
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

@@ -22,32 +22,58 @@
 </head>
 
 <body>
-
     <div class="limiter">
         <div class="container-login100" style="background-image: url('{{ asset('assets/images/back_blue.jpg') }}');">
             <div class="wrap-login100 p-t-30 p-b-50">
-                <!--A imagem ficava aqui-->
-                <form class="login100-form validate-form p-b-33 p-t-5">
+                <form class="login100-form validate-form p-b-33 p-t-5" method="POST" action="{{ route('login') }}">
+                    @csrf
                     <img class="center" src="{{ asset('assets/images/logo_contaut.png') }}">
-                    <div class="wrap-input100 validate-input" data-validate="Enter username">
-                        <input class="input100" type="text" name="username" placeholder="E-mail">
-                        <span class="focus-input100" data-placeholder="&#xe82a;"></span>
-                    </div>
+                    <div style="margin-top:20px;">
+                        <div class="form-group row">
+                            <label for="email"
+                                class="col-md-4 col-form-label text-md-right cor_preta">{{ __('E-Mail Address') }}</label>
 
-                    <div class="wrap-input100 validate-input" data-validate="Enter password">
-                        <input class="input100" type="password" name="pass" placeholder="Senha">
-                        <span class="focus-input100" data-placeholder="&#xe80f;"></span>
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                                    name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                                @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password"
+                                class="col-md-4 col-form-label text-md-right cor_preta">{{ __('Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password"
+                                    class="form-control @error('password') is-invalid @enderror" name="password"
+                                    required autocomplete="current-password">
+
+                                @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
 
                     <div class="container-login100-form-btn m-t-32">
-                        <button class="login100-form-btn">
+                        <button type="submit" class="login100-form-btn">
                             Login
                         </button>
                     </div>
-                    <div style="text-align:center; margin-top:10px;">
+                    <div class="div_esqueceu">
+                        @if (Route::has('password.request'))
                         <a class="btn btn-link" style="color: black;" href="{{ route('password.request') }}">
                             {{ __('Esqueceu a senha?') }}
                         </a>
+                        @endif
                     </div>
                 </form>
             </div>
