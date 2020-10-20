@@ -75,7 +75,7 @@
                                 <div class="widget-content-left">
                                     <div class="btn-group">
                                         <div style="margin-top:8px;margin-right:14px;">
-                                                Olá, Luana
+                                            Olá, Luana
                                         </div>
                                         <div>
                                             <a href="javascript:void(0);" class="nav-link">
@@ -86,7 +86,7 @@
                                         <div>
                                             <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                                document.getElementById('logout-form').submit();">
-                                                 <i class="nav-link-icon fa fa-sign-out-alt"> </i> Sair
+                                                <i class="nav-link-icon fa fa-sign-out-alt"> </i> Sair
                                             </a>
 
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -156,20 +156,30 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{route('clientes.create')}}"
-                                    class="{{request()->routeIs('clientes.create')? 'mm-active' : ''}}">
+                                <a href="{{route('clientes.create')}}">
                                     <i class="metismenu-icon pe-7s-user"></i>
                                     Cadastrar Cliente
-                                    <i class="metismenu-state-icon"></i>
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
-                            </li>
-                            <li>
-                                <a href="{{route('clientes/import')}}"
-                                    class="{{request()->routeIs('clientes/import')? 'mm-active' : ''}}">
-                                    <i class="metismenu-icon fa fa-file-excel"></i>
-                                    Importar Planilha
-                                    <i class="metismenu-state-icon"></i>
-                                </a>
+                                <ul class="{{request()->routeIs('clientes.*')? 'mm-show' : ''}}
+                                    {{request()->routeIs('clientes/*')? 'mm-show' : ''}}">
+                                    <li>
+                                        <a href="{{route('clientes.create')}}"
+                                            class="{{request()->routeIs('clientes.create')? 'mm-active' : ''}}">
+                                            <i class="metismenu-icon pe-7s-user"></i>
+                                            Novo Cliente
+                                            <i class="metismenu-state-icon"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('clientes/import')}}"
+                                            class="{{request()->routeIs('clientes/import')? 'mm-active' : ''}}">
+                                            <i class="metismenu-icon fa fa-file-excel"></i>
+                                            Importar Planilha
+                                            <i class="metismenu-state-icon"></i>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                             <li class="app-sidebar__heading">Relatórios</li>
                             <li>

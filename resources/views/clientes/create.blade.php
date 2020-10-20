@@ -7,7 +7,7 @@
                 <i class="pe-7s-user text-info">
                 </i>
             </div>
-            <div><strong>Cadastrar Cliente</strong>
+            <div><strong>Novo Cliente</strong>
             </div>
         </div>
     </div>
