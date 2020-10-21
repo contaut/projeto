@@ -23,7 +23,7 @@
 
 <body>
     <div class="limiter">
-        <div class="container-login100" style="background-image: url('{{ asset('assets/images/back_blue.jpg') }}');">
+        <div class="container-login100" style="background-image: url('{{ asset('assets/images/bg.png') }}');">
             <div class="wrap-login100 p-t-30 p-b-50">
                 <form class="login100-form validate-form p-b-33 p-t-5" method="POST" action="{{ route('login') }}">
                     @csrf
