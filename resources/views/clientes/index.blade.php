@@ -90,7 +90,7 @@
   $(function () {
 $('#cliente').DataTable({
   stateSave: true,
-  dom: 'Bfrtip',
+  dom: 'lBfrtip',
   "paging": true,
   "ordering": true,
   "info": true,
@@ -112,8 +112,14 @@ $('#cliente').DataTable({
   "targets": 5 
   }],
   buttons: [
-            'excelHtml5',
-            'csvHtml5'
+            {
+                extend: 'excelHtml5',
+                title: 'Lista de Clientes'
+            },
+            {
+                extend: 'pdfHtml5',
+                title: 'Lista de Clientes'
+            }
         ],
   "language": {
   "sEmptyTable":   "Não foi encontrado nenhum registo",
