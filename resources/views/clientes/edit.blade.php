@@ -75,7 +75,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="position-relative form-group"><label for="cga" class="">CGA/Inscrição
-                                    Municipal <span class="required_input">*</span></label><input name="cga" id="cga"
+                                    Municipal </label><input name="cga" id="cga"
                                     placeholder="Informe o CGA" type="text" class="form-control"
                                     value="{{ $client['cga']}}" required readonly>
                                 <div class="invalid-feedback">
