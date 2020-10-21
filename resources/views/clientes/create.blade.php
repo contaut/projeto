@@ -1,5 +1,10 @@
 @extends('layouts.admin')
 @section('content')
+<style>
+    .swal-modal {
+        width: 350px !important;
+    }
+</style>
 <div class="app-page-title">
     <div class="page-title-wrapper">
         <div class="page-title-heading">
@@ -19,6 +24,15 @@
         </div>
         @endforeach
     </div>
+    @endif
+    @if(session('mensagem'))
+    <script>
+        swal({
+              title: 'Sucesso',
+              text: 'Cliente cadastrado!',
+              icon: 'success',
+          });
+    </script>
     @endif
 </div>
 <div class="tab-content">

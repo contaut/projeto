@@ -64,7 +64,7 @@ class ClienteController extends Controller
         //dd($file);
 
         Excel::import(new ClientesImport, $file);     
-        return redirect()->route('clientes.index');//with('success', 'All good!');  
+        return redirect()->route('clientes.index')->with('mensagem', 'Clientes cadastrados!');
         } 
         catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
             $failures = $e->failures();
@@ -101,7 +101,7 @@ class ClienteController extends Controller
         $cliente->uniprofissional = $request->input('uniprofissional');
         $cliente->qtd_socios = $request->input('qtd_socios');
         $cliente->save();
-        return redirect()->route('clientes.index')->with('mensagem', 'Cliente cadastrado!');
+        return redirect()->route('clientes.create')->with('mensagem', 'Cliente cadastrado!');
     }
 
     /**
