@@ -161,8 +161,8 @@
                                     Cadastrar Cliente
                                     <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
-                                <ul class="{{request()->routeIs('clientes.*')? 'mm-show' : ''}}
-                                    {{request()->routeIs('clientes/*')? 'mm-show' : ''}}">
+                                <ul class="{{request()->routeIs('clientes.create')? 'mm-show' : ''}}
+                                    {{request()->routeIs('clientes/import')? 'mm-show' : ''}}">
                                     <li>
                                         <a href="{{route('clientes.create')}}"
                                             class="{{request()->routeIs('clientes.create')? 'mm-active' : ''}}">
