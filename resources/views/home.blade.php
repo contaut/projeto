@@ -6,7 +6,7 @@
     use Carbon\Carbon;
     \Carbon\Carbon::setUtf8(true);
     setlocale(LC_TIME, 'pt_BR'); // LC_TIME é formatação de data e hora com strftime()
-    $dt = Carbon::now();
+    $dt = Carbon::now(new DateTimeZone('America/Bahia'));
     $data_atual = $dt->formatLocalized('%A , %d de %B de %Y');
     echo ucfirst(gmstrftime($data_atual));
     ?>
@@ -78,7 +78,7 @@
                 <div class="btn-actions-pane-right">
                     <div role="group" class="btn-group-sm btn-group">
                         <?php
-                            $dt = Carbon::now();
+                            $dt = Carbon::now(new DateTimeZone('America/Bahia'));
                             $lastMonth = $dt->subMonth(1)->formatLocalized('%B');
                             $lastMonth = ucfirst(gmstrftime($lastMonth));
                         ?>
