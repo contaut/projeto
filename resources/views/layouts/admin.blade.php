@@ -22,12 +22,12 @@
     =========================================================
     * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
     -->
+    <link href="{{ asset('assets/css/general.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/system.css') }}" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-    <script type='text/javascript'
-        src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
+    <script src="{{ asset('assets/js/sweetalert.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.inputmask.bundle.js') }}"></script>
 
 </head>
 
@@ -203,7 +203,7 @@
                                 <ul class="nav">
                                     <li class="nav-item">
                                         <a href="javascript:void(0);" class="nav-link">
-                                            Contaut @ 2020
+                                            Contaut &copy; <?php echo date("Y"); ?>
                                         </a>
                                     </li>
                                 </ul>
@@ -212,7 +212,6 @@
                     </div>
                 </div>
             </div>
-            <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
         </div>
     </div>
     <script type="text/javascript" src="{{ asset('assets/scripts/main.js') }}"></script>

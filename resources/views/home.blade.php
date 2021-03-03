@@ -1,7 +1,10 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="row" style="color:black; font-weight:bold; margin-bottom:10px; margin-left:3px;">
+<link href="{{ asset('assets/css/datatable/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+<script src="{{ asset('assets/js/datatable/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('assets/js/datatable/dataTables.bootstrap4.min.js') }}"></script>
+<div class="row home">
     <?php
     use Carbon\Carbon;
     \Carbon\Carbon::setUtf8(true);
@@ -59,11 +62,12 @@
             <div class="card-header">
                 <!-- Search form -->
                 <div class="input-group md-form form-sm form-2 pl-0">
-                    <input class="form-control my-0 py-1 amber-border" type="text" placeholder="Pesquisar"
-                        aria-label="Search">
+                    <input class="form-control my-0 py-1 amber-border" autofocus type="text" placeholder="Pesquisar"
+                        aria-label="Search" id="mySearchText">
                     <div class="input-group-append">
-                        <span class="input-group-text amber lighten-3" id="basic-text1"><i
-                                class="fas fa-search text-grey" aria-hidden="true"></i></span>
+                        <span class="input-group-text amber lighten-3" id="mySearchButton"><i
+                                class="fas fa-search text-grey" aria-hidden="true">
+                            </i></span>
                     </div>
                 </div>
             </div>
@@ -87,7 +91,8 @@
                 </div>
             </div>
             <div class="table-responsive">
-                <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+                @if(count($clientes)>0)
+                <table id="cliente" class="align-middle mb-0 table table-borderless table-striped table-hover">
                     <thead>
                         <tr>
                             <th class="text-center">Nome</th>
@@ -97,11 +102,12 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($clientes as $cliente)
                         <tr>
                             <td class="text-center">
-                                Cliente 1
+                                {{ $cliente->nome }}
                             </td>
-                            <td class="text-center">Madrid</td>
+                            <td class="text-center">{{ $cliente->cnpj }}</td>
                             <td class="text-center">
                                 <div class="badge badge-warning">Pending</div>
                             </td>
@@ -110,49 +116,13 @@
                                     class="btn btn-primary btn-sm">Details</button>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="text-center">
-                                Cliente 1
-                            </td>
-                            <td class="text-center">Berlin</td>
-                            <td class="text-center">
-                                <div class="badge badge-success">Completed</div>
-                            </td>
-                            <td class="text-center">
-                                <button type="button" id="PopoverCustomT-2"
-                                    class="btn btn-primary btn-sm">Details</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">
-                                Cliente 1
-                            </td>
-                            <td class="text-center">London</td>
-                            <td class="text-center">
-                                <div class="badge badge-danger">In Progress</div>
-                            </td>
-                            <td class="text-center">
-                                <button type="button" id="PopoverCustomT-3"
-                                    class="btn btn-primary btn-sm">Details</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">
-                                Cliente 1
-                            </td>
-                            <td class="text-center">Amsterdam</td>
-                            <td class="text-center">
-                                <div class="badge badge-info">On Hold</div>
-                            </td>
-                            <td class="text-center">
-                                <button type="button" id="PopoverCustomT-4"
-                                    class="btn btn-primary btn-sm">Details</button>
-                            </td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
+                @endif
             </div>
         </div>
     </div>
 </div>
+<script src="{{ asset('assets/js/home.js') }}"></script>
 @endsection

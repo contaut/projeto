@@ -1,17 +1,16 @@
 @extends('layouts.admin')
 @section('content')
-<!--<link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">-->
-<link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+<link href="{{ asset('assets/css/datatable/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 
-<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+<script src="{{ asset('assets/js/datatable/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('assets/js/datatable/dataTables.bootstrap4.min.js') }}"></script>
 
-<script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
-<link href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css" rel="stylesheet">
+<script src="{{ asset('assets/js/datatable/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('assets/js/datatable/jszip.min.js') }}"></script>
+<script src="{{ asset('assets/js/datatable/pdfmake.min.js') }}"></script>
+<script src="{{ asset('assets/js/datatable/vfs_fonts.js') }}"></script>
+<script src="{{ asset('assets/js/datatable/buttons.html5.min.js') }}"></script>
+<link href="{{ asset('assets/css/datatable/buttons.dataTables.min.css') }}" rel="stylesheet">
 <div class="app-page-title">
   <div class="page-title-wrapper">
     <div class="page-title-heading">
@@ -70,83 +69,5 @@
   </div>
 </div>
 
-<script>
-  $('.delete-confirm').on('click', function (event) {
-    event.preventDefault();
-    const url = $(this).attr('href');
-    swal({
-        title: 'Você tem certeza?',
-        text: 'Esse registro será apagado permanentemente!',
-        icon: 'warning',
-        buttons: ["Cancelar", "Sim"],
-        closeOnClickOutside: false,
-        dangerMode: true,
-    }).then(function(value) {
-        if (value) {
-            window.location.href = url;
-        }
-    });
-});
-  $(function () {
-$('#cliente').DataTable({
-  stateSave: true,
-  dom: 'lBfrtip',
-  "paging": true,
-  "ordering": true,
-  "info": true,
- // "autoWidth": false,
-  'columnDefs': [
-  {
-        "targets": 2, // your case first column
-        "className": "text-center",
-  },
-  {
-        "targets": 3,
-        "className": "text-center",
-  },
-  {
-        "targets": 4,
-        "className": "text-center",
-  },
-  { "orderable": false, 
-  "targets": 5 
-  }],
-  buttons: [
-            {
-                extend: 'excelHtml5',
-                title: 'Lista de Clientes'
-            },
-            {
-                extend: 'pdfHtml5',
-                title: 'Lista de Clientes'
-            }
-        ],
-  "language": {
-  "sEmptyTable":   "Não foi encontrado nenhum registo",
-  "sLoadingRecords": "A carregar...",
-  "sProcessing":   "A processar...",
-  "sLengthMenu":   "Mostrar _MENU_ registos",
-  "sZeroRecords":  "Não foram encontrados resultados",
-  "sInfo":         "Mostrando de _START_ até _END_ de _TOTAL_ registos",
-  "sInfoEmpty":    "Mostrando de 0 até 0 de 0 registos",
-  "sInfoFiltered": "(filtrado de _MAX_ registos no total)",
-  "sInfoPostFix":  "",
-  "sSearch":       "Procurar:",
-  "sUrl":          "",
-  "oPaginate": {
-      "sFirst":    "Primeiro",
-      "sPrevious": "Anterior",
-      "sNext":     "Próximo",
-      "sLast":     "Último"
-  },
-  "oAria": {
-      "sSortAscending":  ": Ordenar colunas de forma ascendente",
-      "sSortDescending": ": Ordenar colunas de forma descendente"
-  }
-
-    },
-});
-$('div.dataTables_filter input').focus()
-});
-</script>
+<script> </script>
 @endsection
