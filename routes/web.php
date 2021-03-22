@@ -28,3 +28,5 @@ Route::get('cliente/delete/{id}', 'ClienteController@destroy');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('/script', 'PythonController@run');

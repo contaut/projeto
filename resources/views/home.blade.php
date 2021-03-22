@@ -111,9 +111,16 @@
                             <td class="text-center">
                                 <div class="badge badge-warning">Pending</div>
                             </td>
-                            <td class="text-center">
+                            <!--<td class="text-center">
                                 <button type="button" id="PopoverCustomT-1"
-                                    class="btn btn-primary btn-sm">Details</button>
+                                    class="btn btn-primary btn-sm">Processar</button>
+                            </td>-->
+                            <td>
+                                <form action="/script" method="post">
+                                    <input type="hidden" name="id" value={{ $cliente->id }}>
+                                    @csrf
+                                    <button type="submit">Run Python</button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach
