@@ -69,5 +69,5 @@
   </div>
 </div>
 
-<script> </script>
+<script src="{{ asset('assets/js/index_cliente.js') }}"></script>
 @endsection
