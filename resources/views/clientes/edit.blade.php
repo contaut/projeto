@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="col-md-6">
+                        <!--<div class="col-md-6">
                             <div class="position-relative form-group"><label for="senha" class="">Senha <span
                                         class="required_input">*</span></label><input name="senha" id="senha"
                                     placeholder="Digite aqui a senha" type="password" class="form-control"
@@ -72,7 +72,7 @@
                                     Parece OK!
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                         <div class="col-md-6">
                             <div class="position-relative form-group"><label for="cga" class="">CGA/Inscrição
                                     Municipal </label><input name="cga" id="cga"
@@ -86,8 +86,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-row">
+                   <!-- </div>
+                    <div class="form-row">-->
                         <div class="col-md-6">
                             <div class="position-relative form-group"><label for="uniprofissional"
                                     class="">Uniprofissional? <span class="required_input">*</span></label><select
