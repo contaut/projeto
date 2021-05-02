@@ -93,11 +93,15 @@ class ClienteController extends Controller
             'qtd_socios' => 'required_if:uniprofissional,==,S',
         ], $mensagens);
 
+        $cipher = "aes-256-cbc";
+        $iv = "0123456789012345";
+        $key = "870d87ta20685b40";
+
         $cliente = new Cliente();
         $cliente->nome = $request->input('nome');
         $cliente->cnpj = $request->input('cnpj');
         $cliente->cga = $request->input('cga');
-        $cliente->senha = $request->input('senha');
+        $cliente->senha = openssl_encrypt($request->input('senha'), $cipher, $key, $options=0, $iv);
         $cliente->uniprofissional = $request->input('uniprofissional');
         $cliente->qtd_socios = $request->input('qtd_socios');
         $cliente->save();
@@ -144,7 +148,7 @@ class ClienteController extends Controller
                     Rule::unique('clientes')->ignore($client->id),
                 ],
                 'nome' => 'required|max:255',
-                'senha' => 'required',
+               /* 'senha' => 'required',*/
                 'uniprofissional' => 'required|max:255',
                 'qtd_socios' => 'required_if:uniprofissional,==,S',
             ]);   
