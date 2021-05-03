@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Cliente;
+use App\User;
 
 class AdminController extends Controller
 {
@@ -13,7 +13,7 @@ class AdminController extends Controller
     }
 
     public function index(){
-        $clientes = Cliente::all();
-        return view ('admin', compact('clientes'));
+        $usuarios = User::all();
+        return view ('admin', compact('usuarios'));
     }
 }

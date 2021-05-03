@@ -78,7 +78,7 @@
     <!-- Search form -->
     <div class="col-md-12">
         <div class="main-card mb-3 card">
-            <div class="card-header">Admin Ativos
+            <div class="card-header">Usuários Ativos
                 <div class="btn-actions-pane-right">
                     <div role="group" class="btn-group-sm btn-group">
                         <?php
@@ -91,25 +91,25 @@
                 </div>
             </div>
             <div class="table-responsive">
-                @if(count($clientes)>0)
+                @if(count($usuarios)>0)
                 <table id="cliente" class="align-middle mb-0 table table-borderless table-striped table-hover">
                     <thead>
                         <tr>
                             <th class="text-center">Nome</th>
-                            <th class="text-center">CNPJ</th>
-                            <th class="text-center">Status</th>
+                            <th class="text-center">E-mail</th>
+                            <th class="text-center">Plano</th>
                             <th class="text-center">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($clientes as $cliente)
+                        @foreach ($usuarios as $usuario)
                         <tr>
                             <td class="text-center">
-                                {{ $cliente->nome }}
+                                {{ $usuario->name }}
                             </td>
-                            <td class="text-center">{{ $cliente->cnpj }}</td>
+                            <td class="text-center">{{ $usuario->email }}</td>
                             <td class="text-center">
-                                <div class="badge badge-warning">Pending</div>
+                                <div class="badge badge-warning">1 ano</div>
                             </td>
                             <!--<td class="text-center">
                                 <button type="button" id="PopoverCustomT-1"
@@ -117,7 +117,7 @@
                             </td>-->
                             <td>
                                 <form action="/script" method="post">
-                                    <input type="hidden" name="id" value={{ $cliente->id }}>
+                                    <input type="hidden" name="id" value={{ $usuario->id }}>
                                     @csrf
                                     <button type="submit">Run Python</button>
                                 </form>

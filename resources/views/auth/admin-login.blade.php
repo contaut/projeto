@@ -28,6 +28,9 @@
                 <form class="login100-form validate-form p-b-33 p-t-5" method="POST" action="{{ route('admin.login.submit') }}">
                     @csrf
                     <img class="center" src="{{ asset('assets/images/logo_contaut.png') }}">
+                    <div class="text-center">
+                        <div class="badge badge-warning">ADMIN</div>
+                    </div>
                     <div style="margin-top:20px;">
                         <div class="form-group row">
                             <label for="email"
