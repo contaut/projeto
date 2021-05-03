@@ -17,16 +17,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/admin', 'AdminController@index')->name('admin.dashboard');
+
+Route::get('/admin/login', 'Auth\AdminLoginController@index')->name('admin.login');
+Route::post('/admin/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
 
 Route::get('clientes/import', 'ClienteController@import')->name('clientes/import');
 Route::post('clientes/importFile', 'ClienteController@importFile')->name('clientes/importFile');
 
 Route::resource('clientes', 'ClienteController', ['except' => 'destroy']);
 Route::get('cliente/delete/{id}', 'ClienteController@destroy');
-
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/script', 'PythonController@run');
