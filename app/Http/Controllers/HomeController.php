@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 use App\Cliente;
@@ -25,7 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $clientes = Cliente::all();
+        $userId = Auth::id();
+        $clientes = DB::table('clientes')->where('user_id', '=', $userId)->get();
         return view ('home', compact('clientes'));
     }
 }

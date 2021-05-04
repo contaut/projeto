@@ -55,7 +55,7 @@
               <td> {{ $cliente->uniprofissional === "N" ? "Não" : "Sim" }} </td>
               <td> {{ $cliente->qtd_socios > 0 ? $cliente->qtd_socios : "-" }} </td>
               <td>
-                <a href="{{ route ('clientes.edit', $cliente['id'] ) }}" title="Editar"><i class="fas fa-edit"></i></a>
+                <a href="{{ route ('clientes.edit', $cliente->id ) }}" title="Editar"><i class="fas fa-edit"></i></a>
                 <a href="/cliente/delete/{{$cliente->id}}" title="Apagar" class="delete-confirm required_input"><i
                     class="fas fa-trash"></i></a>
               </td>

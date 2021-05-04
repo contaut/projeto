@@ -1,17 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-
 use App\Cliente;
-
 use App\Imports\ClientesImport;
-
 use Maatwebsite\Excel\Facades\Excel;
-
 use Illuminate\Validation\Rule;
-
 use Illuminate\Support\Facades\Validator;
 
 class ClienteController extends Controller
@@ -33,7 +29,8 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        $clientes = Cliente::all();
+        $userId = Auth::id();
+        $clientes = DB::table('clientes')->where('user_id', '=', $userId)->get();
         return view ('clientes.index', compact('clientes'));
     }
 
@@ -80,6 +77,8 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
+        $userId = Auth::id();
+
         $mensagens = [
             'required_if' => 'O campo quantidade de sócios é obrigatório quando a empresa é uniprofissional.'
         ];
@@ -104,6 +103,7 @@ class ClienteController extends Controller
         $cliente->senha = openssl_encrypt($request->input('senha'), $cipher, $key, $options=0, $iv);
         $cliente->uniprofissional = $request->input('uniprofissional');
         $cliente->qtd_socios = $request->input('qtd_socios');
+        $cliente->user_id = $userId;
         $cliente->save();
         return redirect()->route('clientes.create')->with('mensagem', 'Cliente cadastrado!');
     }
