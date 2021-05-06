@@ -9,3 +9,19 @@
     font-weight: 600;
     vertical-align: super;
 }
+
+.activate
+{
+ color:green;
+}
+
+.inactivate
+{
+ color:orange;
+}
+
+a.disabled {
+    pointer-events: none;
+    color: #ccc;
+    /*cursor: not-allowed;*/
+}

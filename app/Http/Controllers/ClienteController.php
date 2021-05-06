@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Cliente;
 use App\Imports\ClientesImport;
+use Facade\FlareClient\Http\Client;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
@@ -172,5 +173,24 @@ class ClienteController extends Controller
         $client->delete();
 
         return redirect()->route('clientes.index');
+    }
+
+    public function updateStatus($id) {
+       
+       $client = Cliente::find($id);
+
+        if($client->ativo == 'S')
+        {
+            $client->ativo = 'N';
+            $msg = 'Cliente inativado';
+        }
+        else
+        {
+            $client->ativo = 'S';
+            $msg = 'Cliente ativado';
+        }
+
+        $client->save();
+        return redirect()->route('clientes.index')->with('mensagem', $msg);
     }
 }

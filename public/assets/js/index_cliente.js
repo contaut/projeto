@@ -3,7 +3,30 @@ $('.delete-confirm').on('click', function (event) {
     const url = $(this).attr('href');
     swal({
         title: 'Você tem certeza?',
-        text: 'Esse registro será apagado permanentemente!',
+        text: 'Essa empresa será apagado permanentemente!',
+        icon: 'warning',
+        buttons: ["Cancelar", "Sim"],
+        closeOnClickOutside: false,
+        dangerMode: true,
+    }).then(function(value) {
+        if (value) {
+            window.location.href = url;
+        }
+    });
+});
+$('.cancel-confirm').on('click', function (event) {
+    event.preventDefault();
+    const url = $(this).attr('href');
+    status = $(this).attr("data-id");
+
+    if(status == 'N')
+        txt = ' ativada';
+    else
+        txt = ' inativada';
+
+    swal({
+        title: 'Você tem certeza?',
+        text: 'Essa empresa será' + txt +'!',
         icon: 'warning',
         buttons: ["Cancelar", "Sim"],
         closeOnClickOutside: false,

@@ -30,5 +30,6 @@ Route::post('clientes/importFile', 'ClienteController@importFile')->name('client
 
 Route::resource('clientes', 'ClienteController', ['except' => 'destroy']);
 Route::get('cliente/delete/{id}', 'ClienteController@destroy');
+Route::get('cliente/updateStatus/{id}', 'ClienteController@updateStatus');
 
 Route::post('/script', 'PythonController@run');
