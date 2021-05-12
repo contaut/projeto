@@ -30,7 +30,7 @@ $('.cancel-confirm').on('click', function (event) {
         icon: 'warning',
         buttons: ["Cancelar", "Sim"],
         closeOnClickOutside: false,
-        dangerMode: true,
+        dangerMode: false,
     }).then(function(value) {
         if (value) {
             window.location.href = url;
