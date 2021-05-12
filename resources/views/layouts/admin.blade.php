@@ -75,7 +75,7 @@
                                 <div class="widget-content-left">
                                     <div class="btn-group">
                                         <div style="margin-top:8px;margin-right:14px;">
-                                            Olá, Luana
+                                            Olá, {{ Auth::user()->name }}
                                         </div>
                                         <div>
                                             <a href="javascript:void(0);" class="nav-link">
